@@ -9,7 +9,7 @@ function App() {
   const [todoList, setTodoList] = useState<Task[]>([
     { id: 10292, text: "haha", status: false },
   ]);
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
 
   function addToTodo(text: string) {
     const tempTodo: Task = {
@@ -42,6 +42,7 @@ function App() {
 
   function deleteCompleted() {
     const upd = todoList.filter((todo) => todo.status !== true);
+    setFilter("all");
     setTodoList(upd);
   }
 
@@ -65,6 +66,7 @@ function App() {
         filterTodo={changeFilter}
         todoList={activeTodoList}
         deleteCompleted={deleteCompleted}
+        currentFilter={filter}
       ></TodoFilter>
     </div>
   );

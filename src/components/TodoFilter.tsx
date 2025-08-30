@@ -4,13 +4,17 @@ type FilterFunction = {
   filterTodo: (type: "all" | "active" | "completed") => void;
   deleteCompleted: () => void;
   todoList: Task[];
+  currentFilter: "all" | "active" | "completed";
 };
 
 export default function TodoFilter({
   filterTodo,
   deleteCompleted,
   todoList,
+  currentFilter,
 }: FilterFunction) {
+  const filterButtonClass = (type: "all" | "active" | "completed") =>
+    currentFilter === type ? "filter active" : "filter";
   return (
     <div
       className="container-filters"
@@ -37,13 +41,22 @@ export default function TodoFilter({
           borderRight: "1px solid gray",
         }}
       >
-        <button onClick={() => filterTodo("all")} className="filter">
+        <button
+          onClick={() => filterTodo("all")}
+          className={filterButtonClass("all")}
+        >
           all
         </button>
-        <button onClick={() => filterTodo("active")} className="filter">
+        <button
+          onClick={() => filterTodo("active")}
+          className={filterButtonClass("active")}
+        >
           active
         </button>
-        <button onClick={() => filterTodo("completed")} className="filter">
+        <button
+          onClick={() => filterTodo("completed")}
+          className={filterButtonClass("completed")}
+        >
           completed
         </button>
       </div>

@@ -23,3 +23,8 @@
   background-color: gray;
   color: black;
 }
+
+.filter.active {
+  border: 1px solid white;
+  border-radius: 5px;
+}
