@@ -7,7 +7,7 @@ type PropsTodo = Task & {
 export default function Todo({ id, text, status, completeTodo }: PropsTodo) {
   return (
     <div
-      className="todo-item"
+      className={status ? `todo-item completed` : `todo-item`}
       style={{
         display: "flex",
         borderRadius: "12px",
